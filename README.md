@@ -18,5 +18,6 @@
 - [Create PDF Reports](https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-windows-10-952b0c48bfa9#.49ii34y7a)
 
 
-|Titolo                      |Autori             |Responsabile         |Link           |
-|:Progetto 1° Semestre (chat)|:Giacinto Di Santis|:Luca Muggiasca      |:--------------|
+| Titolo | Autori | Responsabile | Link |
+| ------ | ------ | ------------ | ---- |
+| Progetto 1° Semestre (chat) | Giacinto Di Santis | Luca Muggiasca |:--------------|
