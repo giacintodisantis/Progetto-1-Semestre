@@ -1,1 +1,1 @@
-# Proggetto 1 Semestre (chat)
+# Progetto 1 Semestre (chat)
