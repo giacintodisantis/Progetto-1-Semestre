@@ -5,7 +5,7 @@
 
 ## Documenti
 - [Documentazione](Documenti/DocumentazioneCompleta.md)
-- [Diario](Documenti/Diario.md)
+- [Diario](Documenti/Diari)
 
 ## [Chat]()
 
