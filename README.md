@@ -2,11 +2,15 @@
 
 ## Descrizione
 
+
 ## Documenti
 - [Documentazione](Documenti/DocumentazioneCompleta.md)
 - [Diario](Documenti/Diario.md)
 
 ## [Chat]()
+
+
+
 
 | Titolo | Autori | Responsabile | Link |
 | ------ | ------ | ------------ | ---- |
