@@ -51,16 +51,11 @@
 
 ### Informazioni sul progetto
 
-  In questo capitolo raccogliere le informazioni relative al progetto, ad esempio:
-
-  -   Allievo/i e docente/i coinvolti nel progetto e rispettivi ruoli,
-
-  -   scuola ,sezione, materia/e,
-
-  -   date di inizio e termine di consegna,
-
-  -   …
-  
+  I3BB M306 SAM Trevano
+  Mandante: Geo Petrini
+  Incaricato: Giacinto Di Santis
+  Data inizio: 09.09.2021
+  Data fine: 23.12.2021
 
 ### Abstract
 
@@ -138,49 +133,17 @@
 
 ### Analisi e specifica dei requisiti
 
-  Il progettista, dopo aver ricevuto il mandato, in collaborazione con il
-  committente redige una lista di requisiti. Durante questi incontri,
-  tramite interviste (da inserire nei diari), il progettista deve cercare
-  di rispondere alle seguenti domande:
-
-  -   Quali sono i bisogni del committente?
-
-  -   Quali funzioni deve svolgere il prodotto?
-
-  -   Come devono essere implementate?
-
-  -   L’utente, come vorrebbe/dovrebbe interagire con il prodotto?
-
-  -   Come verrà utilizzato il prodotto?
-
-  -   Che tipo di interfaccia si immagina?
-
-  -   Che prestazioni minime deve fornire il prodotto?
-
-  -   Che grado di sicurezza deve avere il prodotto?
-
-  -   …
-
-  In base alla lista dei requisiti e all’analisi degli stessi, il
-  progettista redige una *specifica dei requisiti* in cui elenca e
-  descrive in modo dettagliato quali sono le funzionalità che il prodotto
-  fornirà. La specifica dovrebbe essere abbastanza dettagliata da poter
-  essere utilizzata come base per lo sviluppo, ma non troppo; ad esempio
-  non dovrebbe contenere dettagli di implementazione, o definizioni
-  dettagliate dell’interfaccia grafica a meno che questi non siano
-  considerati cruciali. Non si deve scordare che i requisiti non
-  rappresentano delle attività bensì delle caratteristiche che il prodotto
-  dovrà possedere.
-
-
-
-
   |**ID**	|**Nome**			|**Priorità**|**Vers**|**Note**  |
   |----|------------|--------|----|------|
-  |Req-12|Dovrà esserci una maschera di login|1|1.0|...|
-  |Req-13|Si dovranno poter immettere nuovi allievi|1|1.0|...|
-  |Req-14|Dovrà essere possibile la ricerca di allievi|1|1.0|...|
-  
+  |Req-01|Deve esserci una maschera di login|1|1.0|...|
+  |Req-02|Tutte le password devono essere salvate in modo sicuro|1|1.0|...|
+  |Req-03|La permanenza dei messaggi deve essere configurabile|2|1.0|...|
+  |Req-04|Gli admin devono poter creare, modificare ed eliminare i canali|1|1.0|...|
+  |Req-05|Gli admin devono poter cancellare i messaggi, sia singoli che tutti i messaggi della chat|1|1.0|...|
+  |Req-06|Gli admin devono poter inviare un messaggio a tutti gli utenti|2|1.0|...|
+  |Req-07|Gli admin devono poter bannare/eliminare gli utenti|2|1.0|...|
+  |Req-08|La GUI deve essere moderna e accessibile|3|1.0|...|
+  |Req-09|Deve supportare la mappa unicode completa (per i messaggi)|4|1.0|...|
   
 
 
