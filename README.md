@@ -7,6 +7,7 @@
 - [Documentazione](Documenti/DocumentazioneCompleta.md)
 - [Diario](Documenti/Diari)
 - [GANTT](Documenti/GANTT.png)
+- [Progettazione sito](Documenti/Design)
 
 ## [Chat](Chat)
 
