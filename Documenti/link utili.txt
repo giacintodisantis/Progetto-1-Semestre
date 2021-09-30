@@ -1,0 +1,2 @@
+Firebase DB: https://firebase.google.com/docs/database/web/structure-data?authuser=0
+ChaT REALTIME DB: https://adnan-tech.com/realtime-web-based-chat-in-firebase/
