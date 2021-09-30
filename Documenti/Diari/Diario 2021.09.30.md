@@ -10,7 +10,7 @@
 |13:30 - 14:00 |Lettura documentazione db firebase|
 |14:05 - 14:20 |Video costruzione chat            |
 |14:21 - 14:45 |Test per capire il funzionamento db realtime|
-|15.10 - 16:30 |Doc (...)                         |
+|15.10 - 16:30 |Doc (casi d'uso, ...)             |
 
 ##  Problemi riscontrati e soluzioni adottate
 
