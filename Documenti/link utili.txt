@@ -1,2 +1,3 @@
-Firebase DB: https://firebase.google.com/docs/database/web/structure-data?authuser=0
-ChaT REALTIME DB: https://adnan-tech.com/realtime-web-based-chat-in-firebase/
+FIREBASE DB: https://firebase.google.com/docs/database/web/structure-data?authuser=0
+CHAT REALTIME DB: https://adnan-tech.com/realtime-web-based-chat-in-firebase/
+CHAT ENGINE: https://rest.chatengine.io/#368a5171-1015-4916-b64b-0373a3738b77
