@@ -5,8 +5,8 @@ Il progetto è un sistema di trasferimento dei file con cryptografia del file st
 in modo da tenere il server allo scuro del contenuto del file.
 
 ## Documenti
-- [Documentazione Old](Documenti/DocumentazioneCompleta.md)
-- [Progettazione Old](Documenti/Design)
+- [Documentazione Chat](Documenti/DocumentazioneCompleta.md)
+- [Progettazione Chat](Documenti/Design)
 - [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
 - [Diario](Documenti/Diari)
 - [Codice app.py](Documenti/app.py)
