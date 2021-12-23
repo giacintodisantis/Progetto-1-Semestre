@@ -6,14 +6,9 @@ in modo da tenere il server allo scuro del contenuto del file.
 
 ## Documenti
 - [Documentazione Old](Documenti/DocumentazioneCompleta.md)
-- [Documentazione](Documenti/DocumentazioneTransfer.md)
+- [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
 - [Diario](Documenti/Diari)
-- [GANTT Old](Documenti/GANTT_old.png)
-- [GANTT](Documenti/GANTT.png)
-- [Progettazione sito chat](Documenti/Design)
 - [Progettazione trasferimento criptato](Documenti/Design)
-
-## [Chat](Chat)
 
 
 
