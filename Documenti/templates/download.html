@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Encrypted Transfer Download</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='ico/apple-icon-57x57.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='ico/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='ico/favicon-16x16.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/password.css') }}">
+</head>
+<body>
+    <div class="frame-download">
+        <div class="container">
+            <div class="first-example">
+                <input type="password" placeholder="Password" id="password-field">
+                <i id="pass-status" class="fa fa-eye" aria-hidden="false" onClick="viewPassword()"></i>
+                <input class="code-download" type="text" placeholder="Code" id="code-field">
+                <div class="download-btn" id="upld" >Download file</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/password.js') }}"></script>
+    <script>
+        //WEB SOKET
+        var socket = io("ws://127.0.0.1:5000")
+        var lengthFile = 0, ext = "", file = "", password = "", i = 0
+        $('.download-btn').bind('click', function() {
+            password = CryptoJS.SHA256($(':password').val())
+            socket.emit( 'request', {
+                hash: CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(CryptoJS.enc.Utf8.parse(password))),
+                code: $(':text').val()
+            })
+        })
+        socket.on( 'info', function( data ){
+            lengthFile = data['size']
+            ext = data['ext']
+            console.log("n. chunk: " + (Math.ceil(lengthFile/1000)-1) + "\nsize: " + lengthFile + "\next: " + ext)
+        })
+        socket.on( 'download', function( encrypted ){
+            if(i < Math.ceil(lengthFile/1000)){
+                file += CryptoJS.AES.decrypt(encrypted, password, { mode: CryptoJS.mode.ECB }).toString()
+                if((Math.ceil(lengthFile/1000)-1) == i){
+                    var arrayBuffer = new Uint8Array(file.match(/[\da-f]{2}/gi).map(function (h) {return parseInt(h, 16)}))
+                    var content = new Blob([arrayBuffer]);
+                    var a = document.createElement('a')
+                    a.href = window.URL.createObjectURL(content)
+                    a.download = ("prova." + ext)
+                    a.click()
+                }
+            }
+            i+=1
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='ico/apple-icon-57x57.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='ico/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='ico/favicon-16x16.png') }}">
+    <title>Encrypted Transfer Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/password.css') }}">
+</head>
+
+<body>
+    <div class="frame">
+        <div class="container">
+            <div class="first-example">
+                <input type="password" placeholder="Password" id="password-field">
+                <i id="pass-status" class="fa fa-eye" aria-hidden="false" onClick="viewPassword()"></i>
+            </div>
+        </div>
+        <div class="center">
+            <div class="bar"></div>
+            <div class="title">Drop file to upload</div>
+            <div class="dropzone">
+                <div class="content">
+                    <img src="{{ url_for('static', filename='src/upload.svg') }}" class="upload">
+                    <span class="filename"></span>
+                    <input type="file" class="input" id="file">
+                </div>
+            </div>
+            <img src="{{ url_for('static', filename='src/syncing.svg') }}" class="syncing">
+            <img src="{{ url_for('static', filename='src/checkmark.svg') }}" class="done">
+            <div class="upload-btn" id="upld" >Upload file</div>
+            <p class="title code" style="color:white; margin-top:14.5em; display: none;"></p><br>
+            <div class="newfile-btn" onclick="reload()" style="display: none;">New Upload</div>
+            <div class="download-page-btn" onclick='location.href = "/download"' style="display: none;">Download page</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/password.js') }}"></script>
+    <script>
+        //GLOBAL VARS
+        var droppedFiles = false
+        var fileName = ''
+        var $dropzone = $('.dropzone')
+        var $button = $('.upload-btn')
+        var uploading = false
+        var $syncing = $('.syncing')
+        var $done = $('.done')
+        var $bar = $('.bar')
+
+
+        //UPLOAD PAGE JS
+        $dropzone.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+            e.preventDefault()
+            e.stopPropagation()
+        })
+        .on('dragover dragenter', function() {
+            $dropzone.addClass('is-dragover')
+        })
+        .on('dragleave dragend drop', function() {
+            $dropzone.removeClass('is-dragover')
+        })
+        .on('drop', function(e) {
+            droppedFiles = e.originalEvent.dataTransfer.files;
+            fileName = droppedFiles[0]['name']
+            $('.filename').html(fileName)
+            $('.dropzone .upload').hide()
+        })
+
+        function reload() {
+                console.log("gay")
+                document.querySelector("#file").value = null
+                document.querySelector("#password-field").value = null
+                location.reload()
+        }
+
+        $("input:file").change(function (){
+            fileName = $(this)[0].files[0].name
+            $('.filename').html(fileName)
+            $('.dropzone .upload').hide()
+        })
+
+
+        //WEB SOKET
+        var socket = io("ws://127.0.0.1:5000")
+        $button.bind('click', function() {
+            var password = CryptoJS.SHA256($(':password').val())
+            var file = $('#file').prop('files')[0]
+            var sizeChunk = 1000
+            for (let i = 0; i < Math.ceil(file.size/sizeChunk); i++) {
+                var offset = i * sizeChunk
+                file.slice(offset,offset+sizeChunk).text().then(text => {
+                    if(i == Math.ceil(file.size/sizeChunk)-1){
+                        socket.emit( 'take', {
+                            last: true,
+                            first: false,
+                            value: CryptoJS.enc.Base64.stringify(CryptoJS.AES.encrypt(text, password, { mode: CryptoJS.mode.ECB }).ciphertext)
+                        })
+                    }else if(i == 0){
+                        socket.emit( 'take', {
+                            first: true,
+                            ext: file.name.split('.').pop(),
+                            hash: CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(CryptoJS.enc.Utf8.parse(password))),
+                            value: CryptoJS.enc.Base64.stringify(CryptoJS.AES.encrypt(text, password, { mode: CryptoJS.mode.ECB }).ciphertext),
+                        })
+                    }else{
+                        socket.emit( 'take', {
+                            last: false,
+                            first: false,
+                            value: CryptoJS.enc.Base64.stringify(CryptoJS.AES.encrypt(text, password, { mode: CryptoJS.mode.ECB }).ciphertext)
+                        })
+                    }
+                })
+            }
+            if (!uploading && fileName != '' ) {
+                $button.html('Uploading...')
+                $dropzone.fadeOut()
+                $syncing.addClass('active')
+                $done.addClass('active')
+                $bar.addClass('active')
+            }
+        })
+
+        socket.on( 'code', function( code ){
+            uploading = true
+            $button.css("pointer-events", "none")
+	        $button.html('Done')
+            $('.frame').css("height","555px")
+            $('.newfile-btn').css("display", "block")
+            $('.download-page-btn').css("display", "block")
+            $('.code').css("display", "block")
+            $('.code').text("Codice accesso: " + code)
+        })
+    </script>
+</body>
+</html>
