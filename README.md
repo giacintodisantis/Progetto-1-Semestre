@@ -8,7 +8,9 @@ in modo da tenere il server allo scuro del contenuto del file.
 - [Documentazione Old](Documenti/DocumentazioneCompleta.md)
 - [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
 - [Diario](Documenti/Diari)
-- [Progettazione trasferimento criptato](Documenti/Design)
+- [Codice app.py](Documenti/app.py)
+- [Codice Pagine Upload e Download](Documenti/template)
+- [css,js,ico,svg](Documenti/static)
 
 
 
