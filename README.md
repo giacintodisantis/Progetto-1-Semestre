@@ -9,7 +9,7 @@ in modo da tenere il server allo scuro del contenuto del file.
 - [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
 - [Diario](Documenti/Diari)
 - [Codice app.py](Documenti/app.py)
-- [Codice Pagine Upload e Download](Documenti/template)
+- [Codice Pagine Upload e Download](Documenti/templates)
 - [css,js,ico,svg](Documenti/static)
 
 
