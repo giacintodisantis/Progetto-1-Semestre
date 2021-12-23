@@ -6,6 +6,7 @@ in modo da tenere il server allo scuro del contenuto del file.
 
 ## Documenti
 - [Documentazione Old](Documenti/DocumentazioneCompleta.md)
+- [Progettazione Old](Documenti/Design)
 - [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
 - [Diario](Documenti/Diari)
 - [Codice app.py](Documenti/app.py)
