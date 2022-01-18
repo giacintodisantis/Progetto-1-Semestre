@@ -8,6 +8,7 @@ in modo da tenere il server allo scuro del contenuto del file.
 - [Documentazione Chat](Documenti/DocumentazioneCompleta.md)
 - [Progettazione Chat](Documenti/Design)
 - [Documentazione](Documenti/DocumentazioneGiacintoDiSantis.pdf)
+- [Diario](Documenti/Progetto_GiacintoDiSantis.odt)
 - [Diario](Documenti/Diari)
 - [Codice app.py](Documenti/app.py)
 - [Codice Pagine Upload e Download](Documenti/templates)
